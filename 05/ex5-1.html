@@ -27,12 +27,46 @@
             html = html + '</ul>';
             document.getElementById('result').innerHTML = html;
         }
+
+
+        async function a() {
+            var html = '';
+            var research = document.getElementById('textfield01').innerHTML = html;
+
+            var sql = 'select * from Tweets where tweet like ʻ% "${tweet}" %ʼ';
+            var objects = await osql.connect(sql);
+            console.log(objects);
+            html = html + '<ul>'
+
+            for (var i = 0; i < objects.length; i++) {
+                var object = objects[i];
+                html = html + '<li>' + sql + '</li>';
+            }
+            html = html + '</ul>'
+            document.getElementById('textfield01').innerHTML = html;
+
+
+
+        }
+
+
     </script>
 
 </head>
 
 <body>
     <h1>Tweets</h1>
+
+
+    <input id="textfield01" type="text">
+    <button onclick="a()">検索</button>
+    <hr>
+    <p id="textfield01">xxxx</p>
+
+
+    <p>//////////</p>
+
+
     <button onclick="button1Pressed()">X</button>
     <hr>
     <p id="result">xxxx</p>
