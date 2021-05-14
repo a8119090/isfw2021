@@ -11,7 +11,7 @@
 
     <script>
         function button1Pressed() {
-            doSelect();
+            a();
         }
 
         async function doSelect() {
@@ -37,13 +37,18 @@
             var objects = await osql.connect(sql);
             console.log(objects);
 
-            html = html + '<ul>'
-
+            var html = '';
+            html = html + '<table border="1">';
             for (var i = 0; i < objects.length; i++) {
                 var object = objects[i];
-                html = html + '<li>' + object.id + ',' + object.name + ',' + object.tweet + ', ' + object.time + ',' + '</li>';
+                html = html + '<tr>';
+                html = html + '<td>' + object.id + '</td>';
+                html = html + '<td>' + object.name + '</td>';
+                html = html + '<td>' + object.tweet + '</td>';
+                html = html + '</tr>';
             }
-            html = html + '</ul>'
+            html = html + '</table>';
+
             document.getElementById('textfield02').innerHTML = html;
 
 
@@ -66,14 +71,6 @@
     <hr>
     <p id="textfield02">xxxx</p>
 
-
-
-    <h3>最新二十件のツイートを読み込む</h3>
-
-
-    <button onclick="button1Pressed()">X</button>
-    <hr>
-    <p id="result">xxxx</p>
 </body>
 
 </html>
