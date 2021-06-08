@@ -31,12 +31,31 @@
             html = html + '</table>';
             document.getElementById('result').innerHTML = html;
         }
+
+        function button1Pressed() {
+            a();
+        }
+
+        async function a() {
+
+            var userid = document.getElementById('idd').value;
+
+            var sql = `delete from Users where id = "${userid}"`;
+            var objects = await osql.connect(sql);
+            console.log(objects);
+        }
+
+
+
+
     </script>
 
 </head>
 
 <body>
     <h1>Users</h1>
+
+    <p>ID:<input id="idd" type="text"> <button onclick="button1Pressed()">消除</button></p>
     <p id="result">xxxx</p>
 </body>
 
