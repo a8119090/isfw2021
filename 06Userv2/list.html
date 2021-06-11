@@ -26,21 +26,18 @@
                 html = html + '<td>' + object.id + '</td>';
                 html = html + '<td>' + object.name + '</td>';
                 html = html + '<td>' + '<a href="update.html?userid=' + object.id + '">変更</a>' + '</td>';
-                html = html + '<td>' + '<button onclick="button1Pressed()"> 消除 </button>' + '</td>';
+                html = html + '<td>' + '<button onclick="button1Pressed(' + object.id + ')"> 消除 </button>' + '</td>';
                 html = html + '</tr>';
             }
             html = html + '</table>';
             document.getElementById('result').innerHTML = html;
 
-            function button1Pressed() {
-                a();
-            }
-            async function a() {
-                var sql = `delete from Users where id = "${object.id}"`;
-                var objects = await osql.connect(sql);
-                console.log(objects);
-            }
+        }
 
+        async function button1Pressed(id) {
+            var sql = `delete from Users where id = "${id}"`;
+            var objects = await osql.connect(sql);
+            console.log(objects);
         }
 
 
